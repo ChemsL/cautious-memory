@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Percent Border</title>
+</head>
+
+<body>
+
+    <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#f0f0f0" stroke-width="20"></circle>
+        <circle id="progress" cx="100" cy="100" r="90" fill="none" stroke="#3498db" stroke-width="20"
+            stroke-dasharray="0 565"></circle>
+        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" font-size="30" font-weight="bold"
+            fill="#2c3e50">0%</text>
+    </svg>
+
+    <script>
+        function setPercentage(percentage) {
+            const progress = document.getElementById('progress');
+            const text = document.querySelector('text');
+
+            if (percentage > 100) percentage = 100;
+            if (percentage < 0) percentage = 0;
+
+            const length = 565 * (percentage / 100);
+            progress.style.strokeDasharray = `${length} 565`;
+            text.textContent = `${percentage}%`;
+        }
+
+        // Example: Set the percentage to 75
+        setPercentage(75);
+    </script>
+
+</body>
+
+</html>
